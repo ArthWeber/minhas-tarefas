@@ -1,19 +1,50 @@
+import { useDispatch, useSelector } from 'react-redux'
 import FiltroCards from '../../components/FiltroCards'
+import { RootReducer } from '../../store'
+import { alterarTermo } from '../../store/reducers/filtro'
+import * as enums from '../../utils/enums/Tarefas'
 
 import * as S from './styles'
 
 const SideBar = () => {
+  const dispatch = useDispatch()
+  const { termo } = useSelector((state: RootReducer) => state.filtro)
   return (
     <S.Aside>
       <div>
-        <S.Campo type="text" placeholder="Buscar" />
+        <S.Campo
+          type="text"
+          placeholder="Buscar"
+          value={termo}
+          onChange={(evento) => dispatch(alterarTermo(evento.target.value))}
+        />
         <S.Filtros>
-          <FiltroCards contador={0} label="pendentes" />
-          <FiltroCards contador={0} label="concluídas" />
-          <FiltroCards contador={0} label="urgentes" />
-          <FiltroCards contador={0} label="importantes" />
-          <FiltroCards contador={0} label="normal" />
-          <FiltroCards contador={0} label="todas" ativo />
+          <FiltroCards
+            valor={enums.Status.PENDENTE}
+            criterio="status"
+            label="pendentes"
+          />
+          <FiltroCards
+            valor={enums.Status.CONCLUIDA}
+            criterio="status"
+            label="concluídas"
+          />
+          <FiltroCards
+            valor={enums.Prioridade.URGENTE}
+            criterio="prioridade"
+            label="urgentes"
+          />
+          <FiltroCards
+            valor={enums.Prioridade.IMPORTANTE}
+            criterio="prioridade"
+            label="importantes"
+          />
+          <FiltroCards
+            valor={enums.Prioridade.NORMAL}
+            criterio="prioridade"
+            label="normal"
+          />
+          <FiltroCards criterio="todas" label="todas" />
         </S.Filtros>
       </div>
     </S.Aside>
