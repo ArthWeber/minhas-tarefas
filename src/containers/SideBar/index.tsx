@@ -4,6 +4,7 @@ import { RootReducer } from '../../store'
 import { alterarTermo } from '../../store/reducers/filtro'
 import * as enums from '../../utils/enums/Tarefas'
 
+import { Campo } from '../../styles'
 import * as S from './styles'
 
 const SideBar = () => {
@@ -12,7 +13,7 @@ const SideBar = () => {
   return (
     <S.Aside>
       <div>
-        <S.Campo
+        <Campo
           type="text"
           placeholder="Buscar"
           value={termo}

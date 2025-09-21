@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import * as S from './styles'
+import { SaveButton } from '../../styles'
 import { remover, editar } from '../../store/reducers/tarefas'
 import TarefaClass from '../../models/Tarefas'
 
@@ -46,7 +47,7 @@ const Tarefa = ({
       <S.Actions>
         {editing ? (
           <>
-            <S.SaveButton
+            <SaveButton
               onClick={() => {
                 dispatch(
                   editar({
@@ -61,7 +62,7 @@ const Tarefa = ({
               }}
             >
               Salvar
-            </S.SaveButton>
+            </SaveButton>
             <S.RedButton onClick={cancelarEdicao}>Cancelar</S.RedButton>
           </>
         ) : (
