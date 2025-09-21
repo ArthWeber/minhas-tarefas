@@ -31,18 +31,27 @@ const ToDoList = () => {
     }
   }
 
+  const exibeResultadoFiltro = (quantidade: number) => {
+    let mensagem = ''
+    const compl = termo !== undefined && termo.length > 0 ? `e "${termo}"` : ''
+    if (criterio === 'todas') {
+      mensagem = `${quantidade} tarefas marcadas como todas
+      ${compl}`
+    } else {
+      mensagem = `${quantidade} tarefas encontradas como ${valor} ${compl}`
+    }
+
+    return mensagem
+  }
+
+  const tarefas = filtraTarefas()
+  const mensagem = exibeResultadoFiltro(tarefas.length)
+
   return (
     <Container>
-      <p>
-        2 tarefas marcadas como: &quot;categoria&ldquo; e &quot;{termo}&ldquo;
-      </p>
+      <p>{mensagem}</p>
       <ul>
-        <li>{termo}</li>
-        <li>{criterio}</li>
-        <li>{valor}</li>
-      </ul>
-      <ul>
-        {filtraTarefas().map((t) => (
+        {tarefas.map((t) => (
           <li key={t.titulo}>
             <Tarefa
               id={t.id}
