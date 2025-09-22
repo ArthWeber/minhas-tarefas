@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import vars from '../../styles/vars'
-
+import { Button } from '../../styles'
 import * as enums from '../../utils/enums/Tarefas'
 
 type TagProps = {
@@ -69,18 +69,6 @@ export const Description = styled.textarea`
 export const Actions = styled.div`
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 16px;
-`
-
-export const Button = styled.button`
-  font-size: 12px;
-  font-weight: bold;
-  color: #fff;
-  padding: 8px 12px;
-  border: none;
-  cursor: pointer;
-  background-color: #2f3640;
-  border-radius: 8px;
-  margin-right: 8px;
 `
 
 export const YellowButton = styled(Button)`

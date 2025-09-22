@@ -5,7 +5,7 @@ import TarefaClass from '../../models/Tarefas'
 import * as enums from '../../utils/enums/Tarefas'
 
 import * as S from './styles'
-import { SaveButton } from '../../styles'
+import { Button, SaveButton } from '../../styles'
 
 type Props = TarefaClass
 
@@ -88,7 +88,7 @@ const Tarefa = ({
           </>
         ) : (
           <>
-            <S.Button onClick={() => setEditing(true)}>Editar</S.Button>
+            <Button onClick={() => setEditing(true)}>Editar</Button>
             <S.RedButton onClick={() => dispatch(remover(id))}>
               Excluir
             </S.RedButton>
